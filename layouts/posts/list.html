@@ -6,7 +6,10 @@
     {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
   </div>
   {{ .Content }}
-  {{ $paginator := .Paginate (where .Pages "Type" "posts") }}
+  
+  {{ $pages := where site.RegularPages "Type" "posts" }}
+  {{ $paginator := .Paginate $pages }}
+  
   {{ range $paginator.Pages }}
     {{ .Render "summary" }}
   {{ end }}

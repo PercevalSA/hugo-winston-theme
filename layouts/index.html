@@ -21,9 +21,8 @@
       {{ $sorted = $pages.ByParam "date" }}
     {{ end }}
 
-    {{ $paginator := .Paginate $sorted }}
-
     {{ if .Site.Params.usePaginationOnHomepage }}
+      {{ $paginator := .Paginate $sorted }}
       {{ range $paginator.Pages }}
         {{ .Render "summary" }}
       {{ end }}
